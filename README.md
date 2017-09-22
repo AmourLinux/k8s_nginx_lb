@@ -64,5 +64,42 @@ From k8s deployment a loadblance nginx cluster.
   ```
   # for SERVICES in kube-proxy kubelet docker flanneld;do systemctl restart $SERVICES;systemctl enable $SERVICES;systemctl status $SERVICES; done
   ```
-
 # deployment nginx cluster
+  create pod
+  ```
+  # kubectl create -f nginx-rc.yaml
+  ```
+  create service
+  ```
+  # kubectl create -f nginx-service-nodeport.yaml
+  ```
+  view pod state
+  ```
+  # kubectl get pods
+  NAME                     READY     STATUS    RESTARTS   AGE
+  nginx-controller-534rm   1/1       Running   1          11h
+  nginx-controller-c3fzv   1/1       Running   1          11h
+  ```
+  view pod desc
+  ```
+  # kubectl describe pod nginx-controller-534rm
+  ...
+  ```
+  view service state
+  ```
+  # kubectl get service
+  NAME                     CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+  kubernetes               10.254.0.1     <none>        443/TCP          12h
+  nginx-service-nodeport   10.254.2.144   <nodes>       8000:32177/TCP   12h
+  ```
+  view service desc
+  ```
+  # kubectl describe service nginx-service-nodeport
+  ...
+  ```
+  
+  
+  
+  
+  
+  
