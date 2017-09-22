@@ -77,8 +77,8 @@ From k8s deployment a loadbalance nginx cluster.
   ```
   # kubectl get pods
   NAME                     READY     STATUS    RESTARTS   AGE
-  nginx-controller-534rm   1/1       Running   1          11h
-  nginx-controller-c3fzv   1/1       Running   1          11h
+  nginx-controller-534rm   1/1       Running   1          3h
+  nginx-controller-c3fzv   1/1       Running   1          3h
   ```
   *  **view pod desc**
   ```
@@ -89,8 +89,8 @@ From k8s deployment a loadbalance nginx cluster.
   ```
   # kubectl get service
   NAME                     CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
-  kubernetes               10.254.0.1     <none>        443/TCP          12h
-  nginx-service-nodeport   10.254.2.144   <nodes>       8000:32177/TCP   12h
+  kubernetes               10.254.0.1     <none>        443/TCP          3h
+  nginx-service-nodeport   10.254.2.144   <nodes>       8000:32177/TCP   3h
   ```
   *  **view service desc**
   ```
