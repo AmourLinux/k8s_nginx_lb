@@ -1,7 +1,7 @@
 # k8s_nginx_lb
 From k8s deployment a loadblance nginx cluster.
 # k8s_env,master_count:1, pod_count:2.
-  master_configuration:
+  *  **master_configuration:**
   ```
   # yum -y install etcd kubernetes-master
   ```
@@ -29,7 +29,7 @@ From k8s deployment a loadblance nginx cluster.
   ```
   # etcdctl mk /atomic.io/network/config '{"Network":"172.17.0.0/16"}'
   ```
- node_configuration:
+  *  **node_configuration:**
   ```
   # yum -y install flannel kubernetes-node
   ```
