@@ -1,7 +1,6 @@
 # k8s_nginx_lb
 From k8s deployment a loadblance nginx cluster.
-# k8s_env
-master_count:1, pod_count:2.
+# k8s_env,master_count:1, pod_count:2.
   master_configuration:
   ```
   # yum -y install etcd kubernetes-master
@@ -34,32 +33,33 @@ master_count:1, pod_count:2.
   ```
   # yum -y install flannel kubernetes-node
   ```
+  ```
   /etc/sysconfig/flanneld
-  FLANNEL_ETCD="http://192.168.30.20:2379"
+  FLANNEL_ETCD="http://<master_ip>:2379"
   FLANNEL_ETCD_KEY="/atomic.io/network"
 
   /etc/kubernetes/config
   KUBE_LOGTOSTDERR="--logtostderr=true"
   KUBE_LOG_LEVEL="--v=0"
   KUBE_ALLOW_PRIV="--allow-privileged=false"
-  KUBE_MASTER="--master=http://192.168.30.20:8080"
+  KUBE_MASTER="--master=http://<master_ip>:8080"
 
   /etc/kubernetes/kubelet
 　　node1:
   KUBELET_ADDRESS="--address=0.0.0.0"
   KUBELET_PORT="--port=10250"
-  KUBELET_HOSTNAME="--hostname-override=192.168.30.21"
-  KUBELET_API_SERVER="--api-servers=http://192.168.30.20:8080"
+  KUBELET_HOSTNAME="--hostname-override=<node1_ip>"
+  KUBELET_API_SERVER="--api-servers=http://<master_ip>:8080"
   KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest"
   KUBELET_ARGS=""
 　　node2:
   KUBELET_ADDRESS="--address=0.0.0.0"
   KUBELET_PORT="--port=10250"
-  KUBELET_HOSTNAME="--hostname-override=192.168.30.21"
-  KUBELET_API_SERVER="--api-servers=http://192.168.30.20:8080"
+  KUBELET_HOSTNAME="--hostname-override=<node2_ip>"
+  KUBELET_API_SERVER="--api-servers=http://<master_ip>:8080"
   KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest"
   KUBELET_ARGS=""
-
+  ```
   all node run kube-proxy,kubelet,docker,flanneld service，and change to enabled.
   ```
   # for SERVICES in kube-proxy kubelet docker flanneld;do systemctl restart $SERVICES;systemctl enable $SERVICES;systemctl status $SERVICES; done
