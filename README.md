@@ -98,14 +98,9 @@ From k8s deployment a loadbalance nginx cluster.
   ...
   ```
   
-*  **We can use <node_ip>:<port> access nginx cluster , and achieve loadbalance:*
-  In this test. node_ip is node1_ip or node2_ip , port is 32177(by #kubectl get service get).
-  By service_nodeport achieve nginx loadbalance cluster.
-  By rc achieve pod dynamic stretching.
+*  **We can use <node_ip>:<port> access nginx cluster , and achieve loadbalance:**
+*  **In this test. node_ip is node1_ip or node2_ip , port is 32177(by #kubectl get service get).**
+*  **By service_nodeport achieve nginx loadbalance cluster.**
+*  **By rc achieve pod dynamic stretching.**
 
-  
-
-  
-  
-  
   
