@@ -3,10 +3,13 @@ kind: Service
 metadata:
   name: nginx-service-nodeport
 spec:
+  clusterIP: 10.254.136.53
+  #此clusterIP必须处于apiserver配置文件中定义的配置项KUBE_SERVICE_ADDRESSES中的ip-range范围内
   ports:
     - port: 8000
       targetPort: 80
       protocol: TCP
+      nodePort: 32266
   type: NodePort
   selector:
     name: nginx
