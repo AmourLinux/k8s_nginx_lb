@@ -90,7 +90,7 @@ From k8s deployment a loadbalance nginx cluster.
   # kubectl get service
   NAME                     CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
   kubernetes               10.254.0.1     <none>        443/TCP          3h
-  nginx-service-nodeport   10.254.2.144   <nodes>       8000:32177/TCP   3h
+  nginx-service-nodeport   10.254.2.144   <nodes>       8000:32266/TCP   3h
   ```
   *  **view service desc**
   ```
@@ -99,7 +99,7 @@ From k8s deployment a loadbalance nginx cluster.
   ```
   
 *  **We can use <node_ip>:port access nginx cluster , and achieve loadbalance:**
-*  **In this test. node_ip is node1_ip or node2_ip , port is 32177(by #kubectl get service get).**
+*  **In this test. node_ip is node1_ip or node2_ip , port is 32266(by nodePort).**
 *  **By service_nodeport achieve nginx loadbalance cluster.**
 *  **By rc achieve pod dynamic stretching.**
 
